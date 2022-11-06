@@ -24,7 +24,7 @@ const Orders = () => {
   return (
     <div>
       <h1 className='text-center text-2xl font-bold text-amber-800'>Orders</h1>
-      <div className='mx-2 mt-3 flex flex-col items-center gap-2 xl:flex-row xl:flex-wrap'>
+      <div className='mx-2 mt-3 flex flex-col items-center gap-2 text-sm xl:flex-row xl:flex-wrap xl:text-base'>
         {orders
           .reduce((acc, el) => {
             if (el.flag === false) {

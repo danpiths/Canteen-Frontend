@@ -7,7 +7,7 @@ const MenuItemCardAdmin = props => {
       className='flex flex-col items-center justify-between gap-2 overflow-hidden rounded-lg border-2 border-amber-300 bg-amber-200 xl:w-1/5'
     >
       <img
-        className='h-24 w-1/3 object-cover object-center xl:h-32 xl:w-full'
+        className='h-40 w-full object-cover object-center'
         src={props.image}
         alt={props.name}
       />

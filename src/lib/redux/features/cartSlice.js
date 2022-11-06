@@ -16,12 +16,54 @@ export const getCartItems = createAsyncThunk('cart/getCartItems', async () => {
   }
 });
 
+export const clearCart = createAsyncThunk(
+  'cart/clearCart',
+  async (_, thunkAPI) => {
+    try {
+      const { data } = await serverFetch.patch('/cart/clearCart');
+      thunkAPI.dispatch(clearCartLocal());
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 export const updateCart = createAsyncThunk(
   'cart/updateCart',
   async (_, thunkAPI) => {
+    let compareTwoArrayOfObjects = (arrOne, arrTwo) => {
+      return (
+        arrOne.length === arrTwo.length &&
+        arrOne.every(elOne =>
+          arrTwo.some(
+            elTwo =>
+              elOne._id === elTwo._id &&
+              elOne.name === elTwo.name &&
+              elOne.quantity === elTwo.quantity &&
+              elOne.price === elTwo.price
+          )
+        )
+      );
+    };
+
     try {
       const currentCart = thunkAPI.getState().cart;
-      const { data } = await serverFetch.patch('/cart/updateCart', {
+      const { data } = await serverFetch('/cart/myCart');
+      const areCartsSame = compareTwoArrayOfObjects(
+        currentCart.cartItems,
+        data.userCart.cartItems
+      );
+      if (areCartsSame) {
+        return;
+      }
+      if (
+        currentCart.cartItems.length === 0 &&
+        data.userCart.cartItems.length !== 0
+      ) {
+        return;
+      }
+      await serverFetch.patch('/cart/updateCart', {
         totalPrice: currentCart.totalPrice,
         cartItems: currentCart.cartItems,
       });
@@ -36,7 +78,7 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    clearCart: state => {
+    clearCartLocal: state => {
       state.cartItems = [];
     },
     removeItem: (state, { payload }) => {
@@ -84,12 +126,21 @@ const cartSlice = createSlice({
     [updateCart.rejected]: state => {
       state.isLoading = false;
     },
+    [clearCart.pending]: state => {
+      state.isLoading = false;
+    },
+    [clearCart.fulfilled]: (state, action) => {
+      state.isLoading = false;
+    },
+    [clearCart.rejected]: state => {
+      state.isLoading = false;
+    },
   },
 });
 
 export default cartSlice.reducer;
 export const {
-  clearCart,
+  clearCartLocal,
   removeItem,
   increase,
   decrease,

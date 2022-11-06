@@ -17,13 +17,13 @@ const Profile = () => {
           Your Profile
           <div className='absolute top-4 left-8 -z-10 h-5 w-[60%] bg-amber-300'></div>
         </h4>
-        <p className='mt-5 text-lg'>
+        <p className='mt-5 text-base xl:text-lg'>
           <span className='font-bold'>Id:</span> {user.userId}
         </p>
-        <p className='text-lg'>
+        <p className='text-base xl:text-lg'>
           <span className='font-bold'>Name:</span> {user.name}
         </p>
-        <p className='text-lg'>
+        <p className='text-base xl:text-lg'>
           <span className='font-bold'>Role:</span> {user.role}
         </p>
       </div>

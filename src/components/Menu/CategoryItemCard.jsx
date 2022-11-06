@@ -41,7 +41,7 @@ const CategoryItemCard = props => {
 
   // console.log(slugItemName());
   return (
-    <div className='overflow-hidden rounded-md border-2 border-amber-300 bg-amber-100 xl:w-1/4'>
+    <div className='w-full overflow-hidden rounded-md border-2 border-amber-300 bg-amber-100 xl:w-1/4'>
       <img
         src={props.itemImageSrc}
         className='h-40 w-full object-cover object-center'

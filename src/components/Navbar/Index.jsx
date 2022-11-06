@@ -11,11 +11,15 @@ const Index = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const navLinks =
-    user.userId && user.role !== 'admin' ? ['Home', 'Menu', 'Cart'] : ['Home'];
+  const navLinks = user.userId
+    ? user.role !== 'admin'
+      ? ['Home', 'Menu', 'Cart']
+      : ['Home', 'Admin Panel']
+    : ['Home'];
 
   const logout = async () => {
     try {
+      isSidePanelOpen && setIsSidePanelOpen(false);
       await serverFetch('/auth/logout');
       dispatch(clearUser());
       navigate('/');
@@ -49,7 +53,9 @@ const Index = () => {
                   }
                   return `${returnStyle} text-lg font-extrabold `;
                 }}
-                to={`/${link === 'Home' ? '' : link}`}
+                to={`/${
+                  link === 'Home' ? '' : link === 'Admin Panel' ? 'admin' : link
+                }`}
               >
                 {link}
               </NavLink>
@@ -77,7 +83,7 @@ const Index = () => {
           <>
             <Link
               to={'/profile'}
-              className='rounded-md border-2 border-amber-500 bg-amber-100 px-2 py-1 text-sm font-bold uppercase tracking-wide text-amber-700'
+              className='hidden rounded-md border-2 border-amber-500 bg-amber-100 px-2 py-1 text-sm font-bold uppercase tracking-wide text-amber-700 xl:block'
             >
               Profile
             </Link>
@@ -94,7 +100,7 @@ const Index = () => {
               <></>
             )}
             <button
-              className='rounded-md border-2 border-rose-500 bg-rose-100 px-2 py-1 text-sm font-bold uppercase tracking-wide text-rose-700'
+              className='hidden rounded-md border-2 border-rose-500 bg-rose-100 px-2 py-1 text-sm font-bold uppercase tracking-wide text-rose-700 xl:block'
               onClick={logout}
             >
               Logout
@@ -141,6 +147,7 @@ const Index = () => {
         navLinks={navLinks}
         isSidePanelOpen={isSidePanelOpen}
         setIsSidePanelOpen={setIsSidePanelOpen}
+        logout={logout}
       />
     </div>
   );

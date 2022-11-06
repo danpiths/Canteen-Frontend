@@ -24,7 +24,7 @@ const SharedLayout = () => {
               if (isActive) {
                 returnStyle = ' bg-amber-500 font-bold text-white';
               }
-              return `w-full  py-4 text-center capitalize ${returnStyle}`;
+              return `w-full p-4 text-center capitalize ${returnStyle}`;
             }}
             to={`/admin/${link}`}
           >

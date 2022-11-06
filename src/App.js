@@ -41,15 +41,13 @@ function App() {
   }, [cart.cartItems, dispatch]);
 
   useEffect(() => {
-    setTimeout(() => {
-      user.role === 'user' && dispatch(updateCart());
-    }, 500);
-  }, [cart.totalPrice, dispatch, user.role]);
+    user.role === 'user' && dispatch(updateCart());
+  }, [user.role, dispatch, cart.totalPrice]);
 
   useEffect(() => {
     user.role === 'user' && dispatch(getCartItems());
     user.userId && dispatch(getUser());
-  }, [dispatch, user.role, user.userId]);
+  }, [dispatch, user.userId, user.role]);
 
   return (
     <div className='font-primary'>
