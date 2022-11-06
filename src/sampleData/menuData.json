@@ -1,0 +1,34 @@
+{
+  "categoryItems": [
+    {
+      "_id": "1",
+      "name": "Street Ka Swaad",
+      "slug": "street-ka-swaad"
+    },
+    {
+      "_id": "2",
+      "name": "Punjabi da Dhaba",
+      "slug": "punjabi-da-dhaba"
+    },
+    {
+      "_id": "3",
+      "name": "China ka chakhna",
+      "slug": "china-ka-chakna"
+    },
+    {
+      "_id": "4",
+      "name": "South Ka Swaad",
+      "slug": "south-ka-swaad"
+    },
+    {
+      "_id": "5",
+      "name": "Niggas in Paris",
+      "slug": "niggas-in-paris"
+    },
+    {
+      "_id": "6",
+      "name": "Ma ma Mexicano miya",
+      "slug": "ma-ma-mexicano-miya"
+    }
+  ]
+}

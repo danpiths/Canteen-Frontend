@@ -1,0 +1,42 @@
+{
+  "orderItems": [
+    {
+      "_id": "1",
+      "userId": "CE066",
+      "totalPrice": 430,
+      "isPrepared": true,
+      "orderItems": [
+        {
+          "itemId": "1",
+          "quantity": 5
+        },
+        {
+          "itemId": "5",
+          "quantity": 1
+        },
+        {
+          "itemId": "3",
+          "quantity": 2
+        }
+      ],
+      "datePlaced": "2001-01-31T18:30:00.000Z"
+    },
+    {
+      "_id": "2",
+      "userId": "CE066",
+      "totalPrice": 310,
+      "isPrepared": false,
+      "orderItems": [
+        {
+          "itemId": "10",
+          "quantity": 1
+        },
+        {
+          "itemId": "8",
+          "quantity": 2
+        }
+      ],
+      "datePlaced": "2022-08-24T13:19:04.179Z"
+    }
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "menuItems": [
+    {
+      "_id": "1",
+      "category": "street-ka-swaad",
+      "slug": "puff",
+      "name": "Puff",
+      "price": 20,
+      "inStock": true,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://1.bp.blogspot.com/-ubMhXAAgD0Y/X8y7ZQXfiCI/AAAAAAAAc5I/H1giwiNTdjQdcnhp7qxA6wBS4m_9cieVQCLcBGAsYHQ/s1050/veg_puff_5_1.jpg"
+    },
+    {
+      "_id": "2",
+      "category": "street-ka-swaad",
+      "slug": "samosa",
+
+      "name": "Samosa",
+      "price": 20,
+      "inStock": false,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/delish-091621-samosas-04-jg-1632847515.jpg?crop=1xw:0.9168905168905169xh;center,top&resize=640:*"
+    },
+    {
+      "_id": "3",
+      "category": "punjabi-da-dhaba",
+      "slug": "jeera-rice-and-dal-tadka",
+      "name": "Jeera Rice and Dal Tadka",
+      "price": 120,
+      "inStock": true,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://yummydine.in/wp-content/uploads/2016/05/images-3-1.jpeg"
+    },
+    {
+      "_id": "4",
+      "category": "punjabi-da-dhaba",
+      "slug": "chole-kulche",
+
+      "name": "Chole Kulche",
+      "price": 150,
+      "inStock": false,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://www.nehascookbook.com/wp-content/uploads/2021/06/Pindi-chole-kulcha-WS-1.jpg"
+    },
+    {
+      "_id": "5",
+      "category": "china-ka-chakna",
+      "slug": "dry-manchurian",
+
+      "name": "Dry Manchurian",
+      "price": 90,
+      "inStock": true,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://cdn.tarladalal.com/members/9306/procstepimgs/veg-manchurian-dry-recipe-(2)-3-191684.jpg"
+    },
+    {
+      "_id": "6",
+      "category": "china-ka-chakna",
+      "slug": "hakka-noodle",
+
+      "name": "Hakka Noodle",
+      "price": 110,
+      "inStock": false,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://www.vegrecipesofindia.com/wp-content/uploads/2018/10/hakka-noodles-recipe-1.jpg"
+    },
+    {
+      "_id": "7",
+      "category": "south-ka-swaad",
+      "slug": "cheese-masala-dosa",
+
+      "name": "Cheese Masala Dosa",
+      "price": 100,
+      "inStock": true,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://www.indianhealthyrecipes.com/wp-content/uploads/2016/09/cheese-dosa-recipe-500x375.jpg"
+    },
+    {
+      "_id": "8",
+      "category": "south-ka-swaad",
+      "slug": "mendu-vada",
+      "name": "Mendu Vada",
+      "price": 90,
+      "inStock": false,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://www.nehascookbook.com/wp-content/uploads/2021/12/Medu-vada-with-sambar-WS-1.jpg"
+    },
+    {
+      "_id": "9",
+      "category": "niggas-in-paris",
+      "slug": "cheese-burst-pizza",
+
+      "name": "Cheese Burst Pizza",
+      "price": 250,
+      "inStock": true,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://img.freepik.com/free-photo/top-view-pepperoni-pizza-with-mushroom-sausages-bell-pepper-olive-corn-black-wooden_141793-2158.jpg?w=2000"
+    },
+    {
+      "_id": "10",
+      "category": "niggas-in-paris",
+      "slug": "spaghetti",
+
+      "name": "Spaghetti",
+      "price": 130,
+      "inStock": false,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/garlic-spaghetti-horizontal-1539203011.jpg?crop=1xw:1xh;center,top&resize=480:*"
+    },
+    {
+      "_id": "11",
+      "category": "ma-ma-mexicano-miya",
+      "slug": "jain-tacos",
+
+      "name": "Jain Tacos",
+      "price": 180,
+      "inStock": true,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://feelgoodfoodie.net/wp-content/uploads/2017/04/Ground-Beef-Tacos-9.jpg"
+    },
+    {
+      "_id": "12",
+      "category": "ma-ma-mexicano-miya",
+      "slug": "quesedillas",
+
+      "name": "Quesedillas",
+      "price": 180,
+      "inStock": false,
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos eligendi repudiandae tempore? Reprehenderit eius veritatis magnam qui a in corporis.",
+      "itemImageSrc": "https://www.archanaskitchen.com/images/archanaskitchen/0-Archanas-Kitchen-Recipes/2018/Chilli_Paneer_Quesadillas-3_400.jpg"
+    }
+  ]
+}
