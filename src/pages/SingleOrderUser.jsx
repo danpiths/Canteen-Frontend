@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import serverFetch from '../lib/axios/serverFetch';
+import noCacheFetch from '../lib/axios/noCacheFetch';
 
 const SingleOrderUser = () => {
   const user = useSelector(state => state.user);
@@ -13,7 +13,7 @@ const SingleOrderUser = () => {
 
   const getOrder = async () => {
     try {
-      const { data } = await serverFetch(`/orders/${id}`);
+      const { data } = await noCacheFetch(`/orders/${id}`);
       setOrder(data.order);
       setIsPrepared(data.order.isPrepared);
       setIsLoading(false);
@@ -28,6 +28,10 @@ const SingleOrderUser = () => {
 
   useEffect(() => {
     getOrder();
+    if (!order.isPrepared) {
+      const stopInterval = setInterval(getOrder, 10 * 1000);
+      return () => clearInterval(stopInterval);
+    }
     //eslint-disable-next-line
   }, []);
 

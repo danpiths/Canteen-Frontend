@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import serverFetch from '../../lib/axios/serverFetch';
 
-const OrderCard = ({ order }) => {
+const OrderCard = ({ order, isClient }) => {
   const [isPrepared, setIsPrepared] = useState(order.isPrepared);
   const user = useSelector(state => state.user);
 
@@ -19,7 +19,9 @@ const OrderCard = ({ order }) => {
 
   return (
     <div
-      className={`flex w-full flex-col rounded p-3 xl:w-[32%] xl:self-stretch ${
+      className={`flex w-full flex-col rounded p-3 ${
+        isClient ? 'xl:w-[24.5%]' : 'xl:w-[32%]'
+      } xl:self-stretch ${
         isPrepared
           ? 'bg-emerald-100 text-emerald-800'
           : 'bg-rose-100 text-rose-800'

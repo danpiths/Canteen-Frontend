@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import OrderCard from '../components/Order/OrderCard';
-import serverFetch from '../lib/axios/serverFetch';
+import noCacheFetch from '../lib/axios/noCacheFetch';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
@@ -11,7 +11,7 @@ const Orders = () => {
 
   const getOrders = async () => {
     try {
-      const { data } = await serverFetch('/orders/myOrders');
+      const { data } = await noCacheFetch('/orders/myOrders');
       setOrders(data.userOrders);
     } catch (error) {
       console.log(error);
@@ -24,6 +24,9 @@ const Orders = () => {
 
   useEffect(() => {
     getOrders();
+    const stopInterval = setInterval(getOrders, 10 * 1000);
+    return () => clearInterval(stopInterval);
+    //eslint-disable-next-line
   }, []);
 
   return user.role !== 'admin' ? (
@@ -42,7 +45,7 @@ const Orders = () => {
               new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
           )
           .map(order => (
-            <OrderCard order={order} key={order._id} />
+            <OrderCard order={order} key={order._id} isClient={true} />
           ))}
       </div>
     </div>

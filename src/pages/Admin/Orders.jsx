@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import OrderCard from '../../components/Order/OrderCard';
-import serverFetch from '../../lib/axios/serverFetch';
+import noCacheFetch from '../../lib/axios/noCacheFetch';
 
 const Orders = () => {
   const [orders, setOrders] = useState([]);
 
   const getOrders = async () => {
     try {
-      const { data } = await serverFetch('/orders');
+      const { data } = await noCacheFetch('/orders');
       setOrders(data.orders);
     } catch (error) {
       console.log(error);
