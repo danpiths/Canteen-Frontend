@@ -27,7 +27,7 @@ const Menu = () => {
           <MenuItemCardAdmin
             key={category._id}
             name={category.name}
-            image={process.env.REACT_APP_SERVER_ADDRESS + category.image}
+            image={category.image}
             slug={category.slug}
             isAdmin={true}
           />

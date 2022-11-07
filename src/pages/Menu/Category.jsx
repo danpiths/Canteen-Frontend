@@ -71,9 +71,7 @@ const Category = () => {
               price={foodItem.price}
               inStock={foodItem.inStock}
               description={foodItem.description}
-              itemImageSrc={
-                process.env.REACT_APP_SERVER_ADDRESS + foodItem.image
-              }
+              itemImageSrc={foodItem.image}
               isAdmin={false}
             />
           ))}

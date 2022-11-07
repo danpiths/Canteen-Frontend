@@ -80,7 +80,7 @@ const ManageMenu = () => {
                 price={item.price}
                 inStock={item.inStock}
                 description={item.description}
-                itemImageSrc={process.env.REACT_APP_SERVER_ADDRESS + item.image}
+                itemImageSrc={item.image}
                 removeFoodItem={removeFoodItem}
                 isAdmin={true}
               />
