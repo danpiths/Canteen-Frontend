@@ -26,11 +26,26 @@ import { getUser } from './lib/redux/features/userSlice';
 import Profile from './pages/Profile';
 import Orders from './pages/Orders';
 import SingleOrderUser from './pages/SingleOrderUser';
+import { addOrder, getOrders } from './lib/redux/features/orderSlice';
+import io from 'socket.io-client';
+
+const socket = io.connect(process.env.REACT_APP_SERVER_ADDRESS);
 
 function App() {
   const cart = useSelector(state => state.cart);
   const user = useSelector(state => state.user);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    socket.emit('subscribe', 'orders');
+  }, []);
+
+  useEffect(() => {
+    socket.on('changeOrdersClient', data => {
+      dispatch(addOrder({ data, user }));
+    });
+    //eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     user.userId && localStorage.setItem('user', JSON.stringify(user));
@@ -47,6 +62,7 @@ function App() {
   useEffect(() => {
     user.role === 'user' && dispatch(getCartItems());
     user.userId && dispatch(getUser());
+    user.userId && dispatch(getOrders());
   }, [dispatch, user.userId, user.role]);
 
   return (
@@ -56,16 +72,16 @@ function App() {
           <Route index element={<Home />} />
           <Route path='menu' element={<Menu />} />
           <Route path='menu/:category' element={<Category />} />
-          <Route path='cart' element={<Cart />} />
+          <Route path='cart' element={<Cart socket={socket} />} />
           <Route path='signin' element={<SignIn />} />
           <Route path='register' element={<Register />} />
           <Route path='profile' element={<Profile />} />
-          <Route path='orders' element={<Orders />} />
+          <Route path='orders' element={<Orders socket={socket} />} />
           <Route path='orders/:id' element={<SingleOrderUser />} />
           <Route path='admin' element={<AdminSharedLayout />}>
             <Route index element={<Navigate to='/admin/menu' />} />
             <Route path='menu' element={<AdminMenu />} />
-            <Route path='orders' element={<AdminOrders />} />
+            <Route path='orders' element={<AdminOrders socket={socket} />} />
           </Route>
           <Route path='admin/menu/:category' element={<ManageMenu />} />
           <Route
@@ -76,7 +92,10 @@ function App() {
             path='admin/menu/:category/manageMenu/:menuItem'
             element={<ManageMenuItemForm />}
           />
-          <Route path='admin/orders/:id' element={<SingleOrder />} />
+          <Route
+            path='admin/orders/:id'
+            element={<SingleOrder socket={socket} />}
+          />
           <Route path='*' element={<Error />} />
         </Route>
       </Routes>

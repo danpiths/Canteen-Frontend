@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import serverFetch from '../lib/axios/serverFetch';
 import { clearCart, removeItem } from '../lib/redux/features/cartSlice';
+import { addOrder } from '../lib/redux/features/orderSlice';
 
-const Cart = () => {
+const Cart = ({ socket }) => {
   const cart = useSelector(state => state.cart);
   const [cartText, setCartText] = useState('Your Cart is Empty');
   const dispatch = useDispatch();
@@ -23,6 +24,8 @@ const Cart = () => {
         totalPrice: cart.totalPrice,
         orderItems: cart.cartItems,
       });
+      await socket.emit('changeOrdersServer', data.order);
+      dispatch(addOrder({ data: data.order, user }));
       dispatch(clearCart());
       setCartText('ORDER PLACED SUCCESSFULLY');
       setTimeout(() => {

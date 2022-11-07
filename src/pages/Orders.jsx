@@ -1,33 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import OrderCard from '../components/Order/OrderCard';
-import noCacheFetch from '../lib/axios/noCacheFetch';
 
-const Orders = () => {
-  const [orders, setOrders] = useState([]);
+const Orders = ({ socket }) => {
   const user = useSelector(state => state.user);
   const navigate = useNavigate();
-
-  const getOrders = async () => {
-    try {
-      const { data } = await noCacheFetch('/orders/myOrders');
-      setOrders(data.userOrders);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const orders = useSelector(state => state.orders.orders);
 
   useEffect(() => {
     !user.userId && navigate('/');
   }, [user.userId, navigate]);
-
-  useEffect(() => {
-    getOrders();
-    const stopInterval = setInterval(getOrders, 10 * 1000);
-    return () => clearInterval(stopInterval);
-    //eslint-disable-next-line
-  }, []);
 
   return user.role !== 'admin' ? (
     <div>
@@ -45,7 +28,12 @@ const Orders = () => {
               new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
           )
           .map(order => (
-            <OrderCard order={order} key={order._id} isClient={true} />
+            <OrderCard
+              order={order}
+              key={order._id}
+              isClient={true}
+              socket={socket}
+            />
           ))}
       </div>
     </div>

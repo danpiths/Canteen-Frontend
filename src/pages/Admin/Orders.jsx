@@ -1,25 +1,9 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import OrderCard from '../../components/Order/OrderCard';
-import noCacheFetch from '../../lib/axios/noCacheFetch';
 
-const Orders = () => {
-  const [orders, setOrders] = useState([]);
-
-  const getOrders = async () => {
-    try {
-      const { data } = await noCacheFetch('/orders');
-      setOrders(data.orders);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getOrders();
-    const stopInterval = setInterval(getOrders, 10 * 1000);
-    return () => clearInterval(stopInterval);
-  }, []);
+const Orders = ({ socket }) => {
+  const orders = useSelector(state => state.orders.orders);
 
   return (
     <div>
@@ -37,7 +21,7 @@ const Orders = () => {
               new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
           )
           .map(order => (
-            <OrderCard order={order} key={order._id} />
+            <OrderCard order={order} key={order._id} socket={socket} />
           ))}
       </div>
     </div>

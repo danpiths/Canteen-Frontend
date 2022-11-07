@@ -1,21 +1,32 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import serverFetch from '../../lib/axios/serverFetch';
+import { addOrder } from '../../lib/redux/features/orderSlice';
 
-const OrderCard = ({ order, isClient }) => {
-  const [isPrepared, setIsPrepared] = useState(order.isPrepared);
+const OrderCard = ({ order, isClient, socket }) => {
+  const [isPrepared, setIsPrepared] = useState(false);
   const user = useSelector(state => state.user);
+  const dispatch = useDispatch();
 
   const orderPrepared = async () => {
     try {
-      await serverFetch.patch(`/orders/${order._id}`, { isPrepared: true });
+      const { data } = await serverFetch.patch(`/orders/${order._id}`, {
+        isPrepared: true,
+      });
+      await socket.emit('changeOrdersServer', data.order);
       setIsPrepared(true);
+      dispatch(addOrder({ data: order.data, user }));
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    setIsPrepared(order.isPrepared);
+  }, [order]);
 
   return (
     <div
