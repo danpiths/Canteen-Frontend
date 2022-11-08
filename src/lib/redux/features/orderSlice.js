@@ -44,8 +44,6 @@ const orderSlice = createSlice({
         });
         state.orders = modifiedState;
       } else {
-        console.log('1', payload.user.role === 'user');
-        console.log('2', payload.user.userId === payload.data.userId);
         if (
           (payload.user.role === 'user' &&
             payload.user.userId === payload.data.userId) ||
